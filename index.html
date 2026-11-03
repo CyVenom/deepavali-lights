@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deepavali, the festival of lights</title>
+<meta name="description" content="Light a diya, learn the five days, and send a Deepavali greeting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Hanken+Grotesk:wght@400;500;600&family=Noto+Sans+Tamil:wght@500&family=Noto+Sans+Devanagari:wght@500&family=Noto+Sans+Telugu:wght@500&display=swap">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script src="flag.js"></script>
+
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="diya-body" viewBox="0 0 120 130">
+      <path class="oil" d="M16 72 C36 80 84 80 104 72 C100 78 84 84 60 84 C36 84 20 78 16 72Z"/>
+      <rect class="wick" x="57" y="66" width="6" height="12" rx="3"/>
+      <path class="bowl" d="M6 70 C20 74 40 80 60 80 C80 80 100 74 114 70 C112 100 88 122 60 122 C32 122 8 100 6 70Z"/>
+      <path class="rim" d="M6 70 C20 74 40 80 60 80 C80 80 100 74 114 70 C100 68 80 74 60 74 C40 74 20 68 6 70Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="container">
+    <div class="brand">
+      <a class="wordmark" href="#top">Deepavali</a>
+      <span class="byline">Designed and built by Jerry</span>
+    </div>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#countdown">Countdown</a></li>
+        <li><a href="#diyas">Light a diya</a></li>
+        <li><a href="#days">The five days</a></li>
+        <li><a href="#sweets">Sweets</a></li>
+        <li><a href="#create">Create</a></li>
+        <li><a href="#play">Play</a></li>
+        <li><a href="#greeting">Cards</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<button class="btn btn-primary surprise" type="button" id="surprise" aria-pressed="false" hidden>Surprise me</button>
+
+<div class="dock" role="group" aria-label="Sound and lights">
+  <button class="btn btn-quiet" type="button" id="sound" aria-pressed="true" hidden>Sound on</button>
+  <button class="btn btn-quiet" type="button" id="lights" aria-pressed="false">Lights on</button>
+</div>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div>
+        <h1>Light over darkness.</h1>
+        <p class="lead">Five days of lamps, sweets and open doors.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#diyas">Light a diya</a>
+          <a class="btn btn-quiet" href="#days">The five days</a>
+        </div>
+      </div>
+      <div class="hero-diya is-lit" aria-hidden="true">
+        <svg class="diya" viewBox="0 0 120 130"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="band count" id="countdown">
+    <div class="container">
+      <div class="section-head"><h2>Counting down.</h2></div>
+      <div class="count-grid">
+        <div class="clock" role="timer">
+          <div><span class="num" id="cd-d">0</span><span class="u">days</span></div>
+          <div><span class="num" id="cd-h">00</span><span class="u">hours</span></div>
+          <div><span class="num" id="cd-m">00</span><span class="u">minutes</span></div>
+          <div><span class="num" id="cd-s">00</span><span class="u">seconds</span></div>
+        </div>
+        <p class="hint cd-note" id="cd-msg"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band lighting" id="diyas">
+    <div class="glow" id="glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-head">
+        <h2>Light one for someone.</h2>
+        <p class="lead">Tap a lamp to light it. Five makes a bright room.</p>
+      </div>
+      <ul class="row">
+        <li><button type="button" aria-pressed="false"><svg class="diya" viewBox="0 0 120 130" aria-hidden="true"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg><span class="label">Family</span><span class="state">Unlit</span></button></li>
+        <li><button type="button" aria-pressed="false"><svg class="diya" viewBox="0 0 120 130" aria-hidden="true"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg><span class="label">Friends</span><span class="state">Unlit</span></button></li>
+        <li><button type="button" aria-pressed="false"><svg class="diya" viewBox="0 0 120 130" aria-hidden="true"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg><span class="label">Neighbours</span><span class="state">Unlit</span></button></li>
+        <li><button type="button" aria-pressed="false"><svg class="diya" viewBox="0 0 120 130" aria-hidden="true"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg><span class="label">Far away</span><span class="state">Unlit</span></button></li>
+        <li><button type="button" aria-pressed="false"><svg class="diya" viewBox="0 0 120 130" aria-hidden="true"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg><span class="label">Yourself</span><span class="state">Unlit</span></button></li>
+      </ul>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+      <div class="actions"><button class="btn btn-quiet" type="button" id="boom">Set off fireworks</button>
+        <button class="btn btn-quiet" type="button" id="bomb">Bomb cracker</button></div>
+    </div>
+  </section>
+
+  <section class="band band-alt" id="days">
+    <div class="container">
+      <div class="section-head">
+        <h2>The five days.</h2>
+      </div>
+      <ol class="days">
+        <li><span class="n">1</span><h3>Dhanteras</h3><p>A day for health and prosperity. Many families buy something small and shiny.</p></li>
+        <li><span class="n">2</span><h3>Naraka Chaturdashi</h3><p>Remembers the defeat of the demon Narakasura. Lamps are lit before dawn.</p></li>
+        <li class="peak"><span class="n">3</span><h3>Lakshmi Puja</h3><p>The main night. Every window glows, and prayers welcome Lakshmi in.</p></li>
+        <li><span class="n">4</span><h3>Govardhan Puja</h3><p>Remembers Krishna lifting a hill to shelter his village. Food is offered and shared.</p></li>
+        <li><span class="n">5</span><h3>Bhai Dooj</h3><p>Siblings honour each other with a tilak, a gift and sweets.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band" id="stories">
+    <div class="container">
+      <div class="section-head">
+        <h2>Why we light the lamp.</h2>
+      </div>
+      <div class="stories">
+        <article>
+          <h3>Rama comes home</h3>
+          <p>After fourteen years in exile, Rama returned to Ayodhya. The city lined its streets with lamps to light his way.</p>
+        </article>
+        <article>
+          <h3>Lakshmi visits</h3>
+          <p>Lakshmi is said to enter the homes that are clean, open and bright. So the doors stay wide and the lamps stay lit.</p>
+        </article>
+        <article>
+          <h3>Krishna wins</h3>
+          <p>In much of the south, the night remembers Krishna ending the tyrant Narakasura, and a morning that finally arrived.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-alt home" id="home">
+    <div class="container">
+      <svg class="kolam" id="kolam" viewBox="-100 -100 200 200" aria-hidden="true"></svg>
+      <div>
+        <h2>At home.</h2>
+        <ul>
+          <li><strong>An oil bath at dawn</strong>Warm sesame oil, then prayers, before anyone eats.</li>
+          <li><strong>A kolam at the door</strong>Rice flour and colour, drawn fresh to welcome guests.</li>
+          <li><strong>New clothes</strong>Silk saris, kurtas and a lot of gold thread.</li>
+          <li><strong>Open house</strong>Murukku, laddu and a table that never really empties.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="sweets">
+    <div class="container">
+      <div class="section-head"><h2>The sweet table.</h2></div>
+      <div class="sweets">
+        <div class="sw-list" id="sw-list" role="group" aria-label="Sweets"></div>
+        <div class="sw-detail" id="sw-det" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-alt" id="create">
+    <div class="container make">
+      <div>
+        <h2>Make your diya.</h2>
+        <div class="field first"><span class="flabel">Clay</span><div class="sws" id="dz-clay"></div></div>
+        <div class="field"><span class="flabel">Flame</span><div class="sws" id="dz-flame"></div></div>
+        <div class="field"><label for="dz-in">A wish</label><input id="dz-in" type="text" maxlength="30" placeholder="Health for everyone" autocomplete="off"></div>
+        <div class="actions"><button class="btn btn-primary" type="button" id="dz-add">Add to the row</button><button class="btn btn-quiet" type="button" id="dz-clear">Clear the row</button></div>
+      </div>
+      <div class="dz-stage">
+        <svg class="diya big" id="dz" viewBox="0 0 120 130" aria-hidden="true"><use href="#diya-body"/><g class="flame on"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg>
+        <p class="dz-wish" id="dz-wish"></p>
+      </div>
+    </div>
+    <div class="container">
+      <ul class="made" id="made"></ul>
+      <p class="hint" id="made-empty">Your diyas will line up here. They stay on this device.</p>
+    </div>
+  </section>
+
+  <section class="band" id="rangoli">
+    <div class="container make">
+      <div>
+        <h2>Paint a rangoli.</h2>
+        <p class="lead">Pick a colour for every ring.</p>
+        <div id="rg-controls"></div>
+        <div class="actions"><button class="btn btn-quiet" type="button" id="rg-rand">Surprise colours</button><button class="btn btn-primary" type="button" id="rg-dl">Download</button></div>
+      </div>
+      <svg class="kolam" id="rg" viewBox="-100 -100 200 200" role="img" aria-label="Your rangoli"></svg>
+    </div>
+  </section>
+
+  <section class="band band-alt" id="play">
+    <div class="container">
+      <div class="section-head"><h2>Play a little.</h2></div>
+      <div class="tabs" role="tablist" aria-label="Games">
+        <button class="tab" type="button" role="tab" id="tab-quiz" aria-selected="true" aria-controls="pane-quiz">Quiz</button>
+        <button class="tab" type="button" role="tab" id="tab-mem" aria-selected="false" aria-controls="pane-mem">Memory match</button>
+      </div>
+      <div id="pane-quiz" role="tabpanel" aria-labelledby="tab-quiz" class="pane">
+        <p class="hint" id="qz-count"></p>
+        <h3 id="qz-q"></h3>
+        <div class="opts" id="qz-opts"></div>
+        <p class="status" id="qz-fb" role="status" aria-live="polite"></p>
+        <div class="actions"><button class="btn btn-primary" type="button" id="qz-next" hidden>Next</button></div>
+      </div>
+      <div id="pane-mem" role="tabpanel" aria-labelledby="tab-mem" class="pane" hidden>
+        <p class="hint" id="mm-info"></p>
+        <div class="tiles" id="mm-grid"></div>
+        <div class="actions"><button class="btn btn-quiet" type="button" id="mm-new">New game</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band greet" id="greeting">
+    <div class="container">
+      <div>
+        <h2>Send a greeting.</h2>
+        <p class="lead">Pick a language and a look, then add a name.</p>
+        <div class="field first"><label for="who">Who is it for</label><input id="who" type="text" maxlength="24" placeholder="Amma" autocomplete="off"></div>
+        <div class="field"><span class="flabel">Language</span><div class="seg" id="g-lang" role="group" aria-label="Language"></div></div>
+        <div class="field"><span class="flabel">Look</span><div class="seg" id="g-look" role="group" aria-label="Look"></div></div>
+        <div class="actions">
+          <button class="btn btn-primary" type="button" id="copy">Copy greeting</button>
+          <button class="btn btn-quiet" type="button" id="dl">Download card</button>
+          <button class="btn btn-quiet" type="button" id="wa">Share on WhatsApp</button>
+        </div>
+        <p class="hint" id="copied" role="status" aria-live="polite"></p>
+      </div>
+      <div class="card" id="gcard">
+        <div class="lamps is-lit" aria-hidden="true"><svg class="diya" viewBox="0 0 120 130"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg><svg class="diya" viewBox="0 0 120 130"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg><svg class="diya" viewBox="0 0 120 130"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg></div>
+        <p class="msg" id="msg">Happy Deepavali</p>
+        <p class="sub">May your home glow all year.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-alt greet" id="invite">
+    <div class="container">
+      <div>
+        <h2>Invite people home.</h2>
+        <p class="lead">Fill in the details and send the card.</p>
+        <div class="field first"><label for="iv-from">From</label><input id="iv-from" type="text" maxlength="30" placeholder="The Sharma family" autocomplete="off"></div>
+        <div class="field"><label for="iv-when">When</label><input id="iv-when" type="text" maxlength="40" placeholder="Sunday at 6 pm" autocomplete="off"></div>
+        <div class="field"><label for="iv-where">Where</label><input id="iv-where" type="text" maxlength="48" placeholder="12 Garden Road" autocomplete="off"></div>
+        <div class="field"><span class="flabel">Look</span><div class="seg" id="i-look" role="group" aria-label="Look"></div></div>
+        <div class="actions">
+          <button class="btn btn-primary" type="button" id="idl">Download invitation</button>
+          <button class="btn btn-quiet" type="button" id="iwa">Share on WhatsApp</button>
+        </div>
+        <p class="hint" id="inote" role="status" aria-live="polite"></p>
+      </div>
+      <div class="card" id="icard">
+        <div class="lamps is-lit" aria-hidden="true"><svg class="diya" viewBox="0 0 120 130"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg><svg class="diya" viewBox="0 0 120 130"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg><svg class="diya" viewBox="0 0 120 130"><use href="#diya-body"/><g class="flame"><path class="flame-out" d="M60 8 C74 30 80 46 60 70 C40 46 46 30 60 8Z"/><path class="flame-in" d="M60 32 C67 44 69 54 60 68 C51 54 53 44 60 32Z"/></g></svg></div>
+        <p class="msg">You are invited</p>
+        <div class="lines">
+          <p class="sub strong">Deepavali open house</p>
+          <p class="sub" id="ip-when"></p>
+          <p class="sub" id="ip-where"></p>
+          <p class="sub" id="ip-from"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="tour" id="tour" role="dialog" aria-label="Quick tour" hidden>
+  <p id="tour-t"></p>
+  <div class="actions"><button class="btn btn-primary" type="button" id="tour-next">Next</button><button class="btn btn-quiet" type="button" id="tour-skip">Skip</button></div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="mark">Happy Deepavali</div>
+    <ul>
+      <li><a href="#countdown">Countdown</a></li>
+      <li><a href="#diyas">Light a diya</a></li>
+      <li><a href="#days">The five days</a></li>
+      <li><a href="#stories">Stories</a></li>
+      <li><a href="#sweets">Sweets</a></li>
+      <li><a href="#create">Create</a></li>
+      <li><a href="#play">Play</a></li>
+      <li><a href="#greeting">Cards</a></li>
+    </ul>
+    <div class="actions"><button class="btn btn-quiet" type="button" id="tour-start">Take the tour</button><button class="btn btn-quiet" type="button" id="install" hidden>Install the app</button></div>
+    <small>Designed and built by Jerry</small>
+    <small>Dates shift each year with the lunar calendar. Check a local calendar for this year’s night.</small>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="extras.js"></script>
+</body>
+</html>

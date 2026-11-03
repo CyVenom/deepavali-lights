@@ -1,0 +1,11 @@
+{
+  "name": "Deepavali",
+  "short_name": "Deepavali",
+  "description": "Light a diya, play, and send a Deepavali greeting.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1a0a0b",
+  "theme_color": "#1a0a0b",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
