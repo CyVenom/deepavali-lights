@@ -8,7 +8,7 @@ Designed and built by Jerry.
 
 - **Hero and diyas:** a glowing lamp, and five lamps to light. Light all five for fireworks.
 - **Fireworks:** embers, rockets, a cursor sparkler, scroll bursts, corner fountains, a "Bomb cracker" and a 30 second "Surprise me" show that opens by spelling "Happy Deepavali". Sounds are made in the browser with the Web Audio API, no audio files.
-- **Countdown:** counts to 6 pm on 8 November 2026.
+- **Countdown:** counts down to the evening of 8 November 2026.
 - **The five days, stories and the sweet table:** short facts about the festival.
 - **Make your diya:** choose clay, flame and a wish, then keep a row of your lamps (saved on the device only).
 - **Paint a rangoli:** choose a colour for every ring and download the result as a picture.

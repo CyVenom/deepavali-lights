@@ -61,7 +61,7 @@
         } else { msg.textContent = 'Happy Deepavali. See you next year.'; }
         return;
       }
-      msg.textContent = 'Counting to 6 pm on 8 November 2026.';
+      msg.textContent = 'Until the lamps are lit on 8 November 2026.';
       var s = Math.floor(ms / 1000);
       out.d.textContent = Math.floor(s / 86400);
       out.h.textContent = pad(Math.floor(s % 86400 / 3600));
