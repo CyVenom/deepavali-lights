@@ -304,3 +304,11 @@ section { position: relative; }
 .wordmark { display: inline-flex; align-items: center; min-height: 44px; }
 
 .sprite { position: absolute; }
+.sprite { position: absolute; }
+
+/* friendly 404 */
+.lost { min-height: 100svh; display: grid; place-content: center; justify-items: center; gap: var(--space-lg); text-align: center; padding: var(--space-xl) var(--gutter); }
+.lost h1 { font-size: clamp(2.2rem, 6vw, 4rem); max-width: 14ch; }
+.lost .lead { color: var(--color-ink-2); }
+.lost .diya.big { width: min(60vw, 200px); }
+.lost .actions { justify-content: center; margin-top: var(--space-md); }

@@ -1,5 +1,5 @@
-const CACHE = 'deepavali-v2';
-const FILES = ['./', 'index.html', 'style.css', 'tokens.css', 'base.css', 'flag.js', 'main.js', 'extras.js', 'manifest.webmanifest', 'icon.svg'];
+const CACHE = 'deepavali-v3';
+const FILES = ['./', 'style.css', 'tokens.css', 'base.css', 'flag.js', 'main.js', 'extras.js', 'manifest.webmanifest', 'icon.svg'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', (e) => {
